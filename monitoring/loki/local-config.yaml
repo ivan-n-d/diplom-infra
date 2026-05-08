@@ -11,6 +11,8 @@ ingester:
       replication_factor: 1
   chunk_idle_period: 5m
   chunk_retain_period: 30s
+  wal:
+    dir: /tmp/loki/wal
 
 schema_config:
   configs:
@@ -29,3 +31,7 @@ storage_config:
     shared_store: filesystem
   filesystem:
     directory: /tmp/loki/chunks
+
+compactor:
+  working_directory: /tmp/loki/compactor
+  shared_store: filesystem
