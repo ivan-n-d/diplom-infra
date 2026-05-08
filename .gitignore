@@ -6,3 +6,4 @@ terraform.tfvars
 *.pem
 private_key*
 .terraformrc
+tmp.txt
