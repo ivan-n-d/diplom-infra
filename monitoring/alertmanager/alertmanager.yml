@@ -2,12 +2,9 @@ global:
   resolve_timeout: 1m
 
 route:
-  receiver: 'telegram_bot'
+  receiver: 'web_hook'
 
 receivers:
-- name: 'telegram_bot'
-  telegram_configs:
-  - bot_token: '8648927294:AAEs04ykEXTrKbVtLJZkiiu6fNd6WU2X9fM'
-    api_url: 'https://api.telegram.org'
-    chat_id: 1391683310
-    parse_mode: 'HTML'
+- name: 'web_hook'
+  webhook_configs:
+  - url: '<web-hook-id>'
