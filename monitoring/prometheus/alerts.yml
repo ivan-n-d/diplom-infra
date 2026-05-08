@@ -1,0 +1,20 @@
+groups:
+- name: app_alerts
+  rules:
+  - alert: AppIsDown
+    expr: probe_success == 0
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Приложение недоступно!"
+      description: "Сайт {{ $labels.instance }} не отвечает более 1 минуты."
+
+  - alert: SrvLowDiskSpace
+    expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) * 100 < 15
+    for: 2m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Заканчивается место на srv!"
+      description: "На сервере мониторинга осталось менее 15% свободного места."
